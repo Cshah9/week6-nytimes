@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NYTimes Search</title>
+</head>
+<body>
+	<h1>NYTimes Search</h1>
+		Keyword <input id="keyword" type="text"/>
+		<br>
+		# <input id="articles" type="text"/>
+		<br>
+		start <input id="start-year" type="text"/>
+		<br>
+		end <input id="end-year" type="text"/>
+		<br>
+		<button id="search">Search</button>
+
+	<!-- Front End has to do the following -- 
+
+		Give the user the option to search
+
+		What are the search parameters:
+		- Keywords
+		# of articles
+		start year (optional) 
+		end year (optional) 
+
+		Allow user to enter each parameter above
+			Create form
+			Create input for keyword
+			Create input for # of articles
+			Create input for start year
+			Create input for end year
+		Allow user to search
+			Create button...
+		Allow user to Clear Results 
+			Create button
+
+		Then when User clicks Search button, do the the following:
+
+		onclick function for search button
+			***Back end***
+
+			get keyword
+				check that not its not blank
+				q url parameter
+			get # of articles
+				check that that its not blank
+				create var for for loop
+			get start year
+				if blank its okay, leave blank in url
+				url:
+				begin_date=YYYYMMDD
+			get end year
+				if blank its okay, leave blank in url
+				url:
+				end_date=YYYYMMDD
+					
+			create query url
+			https://api.nytimes.com/svc/search/v2/articlesearch.json
+
+			ajax request from nytimes
+				-url : queryURL
+				-method: GET
+			write the done(function(response))
+
+			read the response
+	
+			create loop to loop through response
+				create div for article
+					get title from response and add to article div
+					get author from response and add to article div
+					get section from response and add to article div
+					get year published from response and add to article div
+					get link from response and add to article div
+				append to page - what div....
+
+
+
+
+			***Back end***
+
+
+		When user click clear button, then clear the form:
+			- clear these four- 
+				Keywords
+				# of articles
+				start year (optional) 
+				end year (optional) 
+			-->
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<!-- our script -->
+	<script type="text/javascript">
+
+		$("#search").click(function(){
+			// Then when User clicks Search button, do the the following:
+			console.log("search on click");
+			// onclick function for search button
+			// 	***Back end***
+			var queryUrl = "";
+			var q;
+			var startYr;
+			var endYr;
+			// 	get keyword
+			var keyword = $("#keyword").val();
+			console.log("keyword : " + keyword);
+			// 		check that not its not blank
+			if(keyword==="") {
+				alert ("please enter keyword!");
+				return;
+			}
+			else {
+			// 		q url parameter
+				q = "&q=" + keyword;
+				console.log("q : " + q);
+			}
+			// 	get # of articles
+			// 		check that that its not blank
+			// 		create var for for loop
+			// 	get start year
+			// 		if blank its okay, leave blank in url
+			// 		url:
+			// 		begin_date=YYYYMMDD
+			// 	get end year
+			// 		if blank its okay, leave blank in url
+			// 		url:
+			// 		end_date=YYYYMMDD
+						
+			// 	create query url
+			queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=81a6877120df4788a66d85610096b6a5&" + q;
+
+			console.log(queryUrl);
+
+			// 	ajax request from nytimes
+			// 		-url : queryURL
+			// 		-method: GET
+			
+			// 	write the done(function(response))
+
+			// 	read the response
+		
+			// 	create loop to loop through response
+			// 		create div for article
+			// 			get title from response and add to article div
+			// 			get author from response and add to article div
+			// 			get section from response and add to article div
+			// 			get year published from response and add to article div
+			// 			get link from response and add to article div
+			// 		append to page - what div....
+
+		});
+
+		
+
+		
+
+	</script>
+
+</body>
+</html>
